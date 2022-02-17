@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Redux Gamer\\source\\repos\\Chat-App-NOTS\\Server-App\\Server-App.csproj",
+      "projectUniqueName": "D:\\Repository\\HAN-NOTS-WIN-Chat-App\\Chat-App-NOTS\\Server-App\\Server-App.csproj",
       "projectName": "Server-App",
-      "projectPath": "C:\\Users\\Redux Gamer\\source\\repos\\Chat-App-NOTS\\Server-App\\Server-App.csproj",
+      "projectPath": "D:\\Repository\\HAN-NOTS-WIN-Chat-App\\Chat-App-NOTS\\Server-App\\Server-App.csproj",
       "packagesPath": "C:\\Users\\Redux Gamer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Redux Gamer\\source\\repos\\Chat-App-NOTS\\Server-App\\obj\\",
+      "outputPath": "D:\\Repository\\HAN-NOTS-WIN-Chat-App\\Chat-App-NOTS\\Server-App\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Redux Gamer\\AppData\\Roaming\\NuGet\\NuGet.Config",
