@@ -13,15 +13,23 @@ namespace Server_App
         public Server()
         {
             InitializeComponent();
+
+            /**
+             * Initialize some components with specific values:
+             * - Stop server button hidden
+             **/
             stopButton.Visible = false;
 
+            // Set minimum screen width & height 
             MinimumSize = new Size(550, 275);
         }
 
+        // Starts the server
         private async void startButton_Click(object sender, EventArgs e)
         {
             try
             {
+                // Checks if all inputs are valid
                 if (parseInputs(ipValue.Text, portValue.Text, buffersizeValue.Text))
                 {
                     tcpListener = new TcpListener(IPAddress.Parse(ipValue.Text), parseInt(portValue.Text));
@@ -35,6 +43,8 @@ namespace Server_App
 
                     chatValue.Items.Add("[Server] Opening connection @" + ipValue.Text + ":" + portValue.Text);
 
+                    // Accepts clients trying to connect
+                    // Will also start seperate messageListener Task
                     while (true)
                     {
                         tcpClient = await tcpListener.AcceptTcpClientAsync();
@@ -52,10 +62,12 @@ namespace Server_App
             }
         }
 
+        // Stops the server
         private async void stopButton_Click(object sender, EventArgs e)
         {
             await messageAllClients("[Server] Host has shut down the server");
 
+            // Loops all connected clients and closes them
             foreach (TcpClient tcpClient in tcpClientList)
             {
                 tcpClient.Close();
@@ -78,6 +90,8 @@ namespace Server_App
 
         }
 
+        // Listens for new messages from clients
+        // Also uses StringBuilder to build messages with smaller buffer sizes
         private async Task messageListener(TcpClient tcpClient)
         {
             byte[] buffer = new byte[parseInt(buffersizeValue.Text)];
@@ -115,6 +129,8 @@ namespace Server_App
                 tcpClientList.Remove(tcpClient);
             }
         }
+
+        // Sends the received message to all the clients
         private async Task messageAllClients(string msg)
         {
             if (tcpClientList.Count > 0)
@@ -131,11 +147,16 @@ namespace Server_App
                 }
             }
         }
+
+        // Parses input (string) to output (int)
         public static int parseInt(string input)
         {
             int.TryParse(input, out int output);
             return output;
         }
+
+        // Parses input ip adress (string), port (string) and buffersize (string) 
+        // And checks if everything valid 
         public static bool parseInputs(string ip, string port, string bufferSize)
         {
             bool checkIP = IPAddress.TryParse(ip, out IPAddress iPAddress);
@@ -151,10 +172,10 @@ namespace Server_App
             }
         }
 
+        // In case the host closes the form directly it will still stop the server
         private async void Server_FormClosing(object sender, FormClosingEventArgs e)
         {
             stopButton.PerformClick();
-            Environment.Exit(0);
         }
     }
 }

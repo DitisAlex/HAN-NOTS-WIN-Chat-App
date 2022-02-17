@@ -12,15 +12,24 @@ namespace Client_App
         public Client()
         {
             InitializeComponent();
+
+            /**
+             * Initialize some components with specific values:
+             * - Submit button disabled
+             * - Leave button hidden
+             **/
             submitButton.Enabled = false;
             leaveButton.Visible = false;
 
+            // Set minimum screen width & height
             MinimumSize = new Size(550, 325);
         }
 
+        // Connects client to server
         private async void joinButton_Click(object sender, EventArgs e) { 
             try
             {
+                // Checks if all inputs are valid
                 if (parseInputs(usernameValue.Text, ipValue.Text, portValue.Text, buffersizeValue.Text))
                 {
                     tcpClient = new TcpClient();
@@ -50,10 +59,15 @@ namespace Client_App
             }
         }
 
+        // Disconnects client from server
         private async void leaveButton_Click(object sender, EventArgs e)
         {
             try
             {
+                chatValue.Items.Add("[Server] Disconnecting from " + ipValue.Text + ":" + portValue.Text);
+                byte[] message = Encoding.ASCII.GetBytes(usernameValue.Text + " has disconnected from the server");
+                await networkStream.WriteAsync(message, 0, message.Length);
+
                 joinButton.Visible = true;
                 leaveButton.Visible = false;
                 submitButton.Enabled = false;
@@ -62,20 +76,16 @@ namespace Client_App
                 portValue.Enabled = true;
                 buffersizeValue.Enabled = true;
 
-                chatValue.Items.Add("[Server] Disconnecting from " + ipValue.Text + ":" + portValue.Text);
-                byte[] message = Encoding.ASCII.GetBytes(usernameValue.Text + " has disconnected from the server");
-                await networkStream.WriteAsync(message, 0, message.Length);
-
                 tcpClient.Close();
             }
             catch (SocketException)
             {
-                byte[] message = Encoding.ASCII.GetBytes("Error");
+                byte[] message = Encoding.ASCII.GetBytes("[Server] An error has occurred when trying to disconnect");
                 await networkStream.WriteAsync(message, 0, message.Length); ;
             }
-
         }
 
+        // Submit messages
         private async void submitButton_Click(object sender, EventArgs e)
         {
             if(messageValue.Text.Length > 0){
@@ -86,6 +96,7 @@ namespace Client_App
             }
         }
 
+        // Receives new messages from others
         private async Task messageListener()
         {
             byte[] buffer = new byte[parseInt(buffersizeValue.Text)];
@@ -141,12 +152,15 @@ namespace Client_App
             }
         }
 
+        // Parses input (string) to output (int)
         public static int parseInt(string input)
         {
             int.TryParse(input, out int output);
             return output;
         }
 
+        // Parses inputs username (string), ip adress (string), port (string) and buffersize (string)
+        // And checks if everything is valid
         public static bool parseInputs(string username, string ip, string port, string bufferSize)
         {
             bool checkUsername = username.All(char.IsLetterOrDigit) && username.Length > 0 && username.Length < 20;
@@ -154,20 +168,14 @@ namespace Client_App
             bool checkPort = port.All(char.IsDigit) && parseInt(port) <= 65535 && parseInt(port) > 0;
             bool checkBufferSize = bufferSize.All(char.IsDigit) && parseInt(bufferSize) <= 1024 && parseInt(bufferSize) > 0;
 
-            if (checkUsername && checkIP && checkPort && checkBufferSize)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            if (checkUsername && checkIP && checkPort && checkBufferSize) return true;
+            else return false;
         }
 
+        // In case the user closes the form directly it will still disconnect the client
         private async void Client_FormClosing(object sender, FormClosingEventArgs e)
         {
             leaveButton.PerformClick();
-            Environment.Exit(0);
         }
     }
 }
