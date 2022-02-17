@@ -1,0 +1,17 @@
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\bin\Debug\net6.0-windows\Client-App.exe
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\bin\Debug\net6.0-windows\Client-App.deps.json
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\bin\Debug\net6.0-windows\Client-App.runtimeconfig.json
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\bin\Debug\net6.0-windows\Client-App.dll
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\bin\Debug\net6.0-windows\ref\Client-App.dll
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\bin\Debug\net6.0-windows\Client-App.pdb
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\obj\Debug\net6.0-windows\Client-App.csproj.AssemblyReference.cache
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\obj\Debug\net6.0-windows\Client-App.csproj.GenerateResource.cache
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\obj\Debug\net6.0-windows\Client-App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\obj\Debug\net6.0-windows\Client-App.AssemblyInfoInputs.cache
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\obj\Debug\net6.0-windows\Client-App.AssemblyInfo.cs
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\obj\Debug\net6.0-windows\Client-App.csproj.CoreCompileInputs.cache
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\obj\Debug\net6.0-windows\Client-App.dll
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\obj\Debug\net6.0-windows\ref\Client-App.dll
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\obj\Debug\net6.0-windows\Client-App.pdb
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\obj\Debug\net6.0-windows\Client-App.genruntimeconfig.cache
+C:\Users\Redux Gamer\source\repos\Chat-App-NOTS\Client-App\obj\Debug\net6.0-windows\Client_App.Client.resources
