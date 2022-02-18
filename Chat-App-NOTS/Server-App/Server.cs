@@ -163,13 +163,8 @@ namespace Server_App
             bool checkPort = port.All(char.IsDigit) && parseInt(port) <= 65535 && parseInt(port) > 0;
             bool checkBufferSize = bufferSize.All(char.IsDigit) && parseInt(bufferSize) <= 1024 && parseInt(bufferSize) > 0;
 
-            if (checkIP && checkPort && checkBufferSize)
-            {
-                return true;
-            } else
-            {
-                return false;
-            }
+            if (checkIP && checkPort && checkBufferSize) return true;
+            else return false;
         }
 
         // In case the host closes the form directly it will still stop the server
